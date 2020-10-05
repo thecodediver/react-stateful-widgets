@@ -24,18 +24,21 @@ export const listOfAwesome = [
   { id: '6', name: 'Carol Shaw' },
 ];
 
-
 export default function Programmers() {
   // We'll have to use the state hook twice, as we need two slices of state.
   // The programmers list on the one hand, and the id of the featured programmer on the other.
   const [featured, setFeatured] = useState(listOfAwesome)
   const [programmerId, setprogrammerId] = useState(null)
   const getNameOfFeatured = () => {
-    for(let i = 0; i < featured.length; i++) {
-      if(featured[i].id === programmerId) {
-        return featured[i].name
-      }
-    }
+    // for(let i = 0; i < featured.length; i++) {
+    //   if(featured[i].id === programmerId) {
+    //     return featured[i].name
+    //   }
+    // }
+    const theBest = featured.filter(item => {
+      return item.id === programmerId
+    })
+    return theBest[0].name
     // Leave this for last!
     // This is NOT an event handler but a helper function. See its usage inside the JSX.
     // It's going to utilize both slices of state to return the _name_ of the featured dev.
